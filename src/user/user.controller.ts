@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserDTO } from './dto/user.dto';
 
@@ -13,6 +13,21 @@ export class UserController {
     }
     @Get()
     findAll(){
-     return this.userService.findAll();   
+     return this.userService.findAll();    
     }
+
+    @Get(':id')
+    findOne(@Param('id') id: string){
+        return this.userService.findOne(id);
+    }
+
+    @Put(':id')
+    update(@Param('id') id: string, @Body() userDTO: UserDTO){
+       return this.userService.update(id, userDTO); 
+    }
+    @Delete(':id')
+    delete(@Param('id') id: string){
+        return this.userService.delete(id);
+    }
+
 }
