@@ -15,10 +15,10 @@ export class FlightService {
         return await newFlight.save();
     }
     async findAll(): Promise<IFlight[]>{
-      return await this.model.find().populate('passengers');;
+      return await this.model.find().populate('passengers');
     }
     async findOne(id: string): Promise<IFlight>{
-      return await this.model.findById(id);
+      return await this.model.findById(id).populate('passengers');
     }
 
     async update(id:string, flightDTO:FlightDTO): Promise<IFlight>{
