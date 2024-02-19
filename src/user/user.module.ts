@@ -17,6 +17,7 @@ import { USER } from 'src/common/models/models';
   ]),
  ],
   controllers: [UserController],
-  providers: [UserService]
+  providers: [UserService],
+  exports:[UserService]
 })
 export class UserModule {}
